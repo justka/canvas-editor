@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "eslint": "npx eslint 'src/**/*.tsx' --fix",
+    "prettier": "npx prettier . --write",
+    "cleanup": "npm run eslint && npm run prettier",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -24,6 +28,15 @@
     "globals": "^15.14.0",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
-    "vite": "^6.0.5"
+    "vite": "^6.0.5",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^22.7.9",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
+    "eslint-plugin-perfectionist": "^3.9.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^8.0.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-css-order": "^2.1.2"
   }
 }
