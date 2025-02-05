@@ -19,7 +19,9 @@ export function Layout() {
     setSelectedType(type);
     inputRef.current?.click();
   };
-  const [texts, setTexts] = useState([{}]);
+  const [texts, setTexts] = useState<
+    { color: string; id: number; text: string; x: number; y: number }[]
+  >([]);
 
   const stageRef = useRef<any>(null);
 
@@ -56,11 +58,13 @@ export function Layout() {
 
   const resetModal = useModal(ResetModal);
 
+  const isStartImageVisible = images.length === 0 && texts.length === 0;
+
   return (
     <div className="h-screen p-8 gap-4">
       <div className="content-center grid grid-cols-2 grid-rows-1 gap-4 h-full">
         <div className="bg-[#e4baff] flex justify-center relative">
-          <Image name={IMAGE_NAME.START} />
+          {isStartImageVisible ? <Image name={IMAGE_NAME.START} /> : null}
           <Canva
             images={images}
             inputRef={inputRef}
