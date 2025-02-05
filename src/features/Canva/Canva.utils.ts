@@ -104,17 +104,19 @@ export const handleImageUpload = ({ e, selectedType, setImages }: any) => {
         height = 200;
       }
 
-      setImages((prevImages: any) => [
-        ...prevImages,
-        {
-          height,
-          id: prevImages.length + 1,
-          src: img.src,
-          width,
-          x: 0,
-          y: 0,
-        },
-      ]);
+      setImages((prevImages: any) => {
+        return [
+          ...prevImages,
+          {
+            height,
+            id: prevImages.length + 1,
+            src: img.src,
+            width,
+            x: 0,
+            y: 0,
+          },
+        ];
+      });
     };
   };
   reader.readAsDataURL(file);

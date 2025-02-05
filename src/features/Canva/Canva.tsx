@@ -83,7 +83,6 @@ export const Canva = ({
 
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  console.log({ texts });
   return (
     <div
       className="flex flex-col items-center absolute w-full h-full"
@@ -111,7 +110,9 @@ export const Canva = ({
       <input
         accept="image/*"
         className="hidden"
-        onChange={(e) => handleImageUpload({ e, selectedType, setImages })}
+        onChange={(e) =>
+          handleImageUpload({ e, inputRef, selectedType, setImages })
+        }
         ref={inputRef}
         type="file"
       />
@@ -161,7 +162,6 @@ export const Canva = ({
               );
             })}
             {texts.map(({ color, id, text, x, y }: TextsInterface) => {
-              console.log(color);
               return (
                 <Text
                   draggable

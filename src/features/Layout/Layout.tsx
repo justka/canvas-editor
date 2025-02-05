@@ -17,6 +17,7 @@ export function Layout() {
 
   const handleImageClick = (type: string) => {
     setSelectedType(type);
+    inputRef.current!.value = "";
     inputRef.current?.click();
   };
   const [texts, setTexts] = useState<
@@ -26,9 +27,9 @@ export function Layout() {
   const stageRef = useRef<any>(null);
 
   const resetCanvas = () => {
-    setTexts([]); // Usuwamy wszystkie teksty
-    setImages([]); // Usuwamy wszystkie obrazy
-    resetModal.hide(); // Ukrywamy modal
+    setTexts([]);
+    setImages([]);
+    resetModal.hide();
   };
 
   const handleTextClick = () => {
@@ -45,9 +46,8 @@ export function Layout() {
   const handleExport = () => {
     if (!stageRef.current) return;
 
-    const uri = stageRef.current.toDataURL({ pixelRatio: 2 }); // Wyższa jakość (2x)
+    const uri = stageRef.current.toDataURL({ pixelRatio: 2 });
 
-    // Tworzenie linku do pobrania
     const link = document.createElement("a");
     link.href = uri;
     link.download = "canvas-export.png";
